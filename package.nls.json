@@ -4,5 +4,11 @@
   "extension.goImpl.receiverType.title": "Receiver type",
   "extension.goImpl.receiverType.description": "receiver's type",
   "extension.goImpl.receiverType.value.value": "value receiver",
-  "extension.goImpl.receiverType.value.pointer": "pointer receiver"
+  "extension.goImpl.receiverType.value.pointer": "pointer receiver",
+  "extension.goImpl.receiverNameMode.title": "Receiver name mode",
+  "extension.goImpl.receiverNameMode.description": "Choose how to generate receiver name: by length or fixed name",
+  "extension.goImpl.receiverNameMode.value.length": "Use receiver name based on struct name length",
+  "extension.goImpl.receiverNameMode.value.fixed": "Use fixed receiver name",
+  "extension.goImpl.fixedReceiverName.title": "Fixed receiver name",
+  "extension.goImpl.fixedReceiverName.description": "Fixed receiver name to use when receiverNameMode is set to 'fixed'"
 }

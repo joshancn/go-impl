@@ -4,5 +4,11 @@
   "extension.goImpl.receiverType.title": "接收者类型",
   "extension.goImpl.receiverType.description": "接收者的类型",
   "extension.goImpl.receiverType.value.value": "值接收者",
-  "extension.goImpl.receiverType.value.pointer": "指针接收者"
+  "extension.goImpl.receiverType.value.pointer": "指针接收者",
+  "extension.goImpl.receiverNameMode.title": "接收者名称模式",
+  "extension.goImpl.receiverNameMode.description": "选择如何生成接收者名称：基于长度或固定名称",
+  "extension.goImpl.receiverNameMode.value.length": "使用基于结构体名称长度的接收者名称",
+  "extension.goImpl.receiverNameMode.value.fixed": "使用固定接收者名称",
+  "extension.goImpl.fixedReceiverName.title": "固定接收者名称",
+  "extension.goImpl.fixedReceiverName.description": "当接收者名称模式设置为'fixed'时使用的固定接收者名称"
 }

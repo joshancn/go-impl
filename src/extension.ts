@@ -31,10 +31,15 @@ export class ImplProvider implements vscode.CodeActionProvider {
     codeAction: vscode.CodeAction,
     token: vscode.CancellationToken
   ): vscode.ProviderResult<vscode.CodeAction> {
+    // 获取配置
     const receiverNameLength = vscode.workspace
       .getConfiguration()
       .get('goImpl.receiverNameLength') as number
     const receiverType = vscode.workspace.getConfiguration().get('goImpl.receiverType')
+    // 新增配置项
+    const receiverNameMode = vscode.workspace.getConfiguration().get('goImpl.receiverNameMode') as string
+    const fixedReceiverName = vscode.workspace.getConfiguration().get('goImpl.fixedReceiverName') as string
+    
     const quickPick = vscode.window.createQuickPick()
 
     quickPick.placeholder = TIP
@@ -68,7 +73,16 @@ export class ImplProvider implements vscode.CodeActionProvider {
       description?.includes('/')
         ? (interfaceName = `${description}.${label}`)
         : (interfaceName = `${label}`)
-      const command = `impl "${this.structAtLine.toLowerCase().substring(0, receiverNameLength)} ${
+      
+      // 根据配置决定使用哪种方式生成接收者名称
+      let receiverName = ''
+      if (receiverNameMode === 'fixed') {
+        receiverName = fixedReceiverName
+      } else {
+        receiverName = this.structAtLine.toLowerCase().substring(0, receiverNameLength)
+      }
+      
+      const command = `impl "${receiverName} ${
         receiverType === 'pointer' ? '*' : ''
       }${this.structAtLine}" ${interfaceName}`
 
@@ -102,9 +116,9 @@ export class ImplProvider implements vscode.CodeActionProvider {
     })
     quickPick.show()
 
-    return
+    return codeAction // 添加返回语句
   }
-
+  
   // 何时显示提示
   private isShow(document: vscode.TextDocument, range: vscode.Range) {
     const line = document.lineAt(range.start.line)
