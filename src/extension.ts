@@ -105,7 +105,7 @@ export class ImplProvider implements vscode.CodeActionProvider {
             )
             const snippet = new vscode.SnippetString('\n' + stdout)
 
-            editor.insertSnippet(snippet, new vscode.Position(struct[0].range.e.c + 1, 0))
+            editor.insertSnippet(snippet, new vscode.Position(struct[0].range.b.a + 1, 0))
           })
       })
       quickPick.hide()
